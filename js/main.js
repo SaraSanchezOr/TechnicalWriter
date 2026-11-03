@@ -116,6 +116,14 @@ if (themeToggle) {
   showTheme();
 }
 
+// 2d. Si la persona prefiere menos movimiento, el vídeo no arranca solo
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('video[autoplay]').forEach((video) => {
+    video.removeAttribute('autoplay');
+    video.pause();
+  });
+}
+
 // 3. Si falta una imagen (tu foto o una captura), se muestra un recuadro en su lugar
 document.querySelectorAll('img[data-fallback]').forEach((img) => {
   const markMissing = () => img.closest('figure')?.classList.add('is-missing');
