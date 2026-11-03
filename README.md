@@ -63,4 +63,4 @@ Si compras un dominio (por ejemplo, `sarasanchezortiz.com`), añádelo en **Sett
 
 ## Cambiar colores o tipografías
 
-Todo está al principio de `css/styles.css`, en `:root`. El modo oscuro se activa solo si el sistema de quien visita la web lo usa; sus colores están justo debajo.
+Todo está al principio de `css/styles.css`, en `:root`. Cada color se escribe como `light-dark(modo claro, modo oscuro)`. La web sigue el modo del sistema de quien la visita, y el botón de la cabecera permite cambiarlo a mano.

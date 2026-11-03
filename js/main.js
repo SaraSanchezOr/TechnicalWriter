@@ -124,6 +124,82 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   });
 }
 
+// 2e. Los títulos se escriben letra a letra, como código. El del inicio arranca solo;
+// los demás, cuando aparecen en pantalla
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const typeTitle = (title) => {
+    const isHero = title.matches('.hero h1');
+    const text = title.textContent.trim();
+    title.textContent = '';
+    title.setAttribute('aria-label', text);
+    title.classList.add('typed');
+
+    // Todas las letras ocupan su sitio desde el principio (invisibles), así el texto no salta de línea al escribirse
+    const letters = Array.from(text, (char) => {
+      const span = document.createElement('span');
+      span.className = 'ch';
+      span.textContent = char;
+      title.append(span);
+      return span;
+    });
+
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+    title.insertBefore(cursor, letters[0]);
+
+    let i = 0;
+    const typeNext = () => {
+      letters[i].classList.add('on');
+      i += 1;
+      if (i < letters.length) {
+        title.insertBefore(cursor, letters[i]);
+        setTimeout(typeNext, 35 + Math.random() * 55);
+      } else if (isHero) {
+        title.append(cursor);
+        cursor.classList.add('done');
+      } else {
+        setTimeout(() => cursor.remove(), 1200);
+      }
+    };
+
+    if (isHero) {
+      setTimeout(typeNext, 500);
+    } else if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          typeNext();
+        }
+      }, { threshold: 1 });
+      observer.observe(title);
+    } else {
+      typeNext();
+    }
+  };
+
+  document.querySelectorAll('.hero h1, .section h2, .explainer-title, .article h1').forEach(typeTitle);
+}
+
+// 2f. Servicios y trayectoria: los puntos aparecen uno a uno al llegar a la sección
+document.querySelectorAll('.services, .timeline').forEach((list) => {
+  Array.from(list.children).forEach((item, i) => item.style.setProperty('--i', i));
+
+  const reveal = () => list.classList.add('is-in');
+
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        reveal();
+        observer.disconnect();
+      }
+    }, { threshold: 0.3 });
+    observer.observe(list);
+  } else {
+    reveal();
+  }
+});
+
 // 3. Si falta una imagen (tu foto o una captura), se muestra un recuadro en su lugar
 document.querySelectorAll('img[data-fallback]').forEach((img) => {
   const markMissing = () => img.closest('figure')?.classList.add('is-missing');

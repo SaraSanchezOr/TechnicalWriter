@@ -4,15 +4,15 @@
    ========================================================= */
 
 :root {
-  /* Colores (modo claro) */
-  --paper: #F5F7FA;      /* fondo */
-  --surface: #FFFFFF;    /* cajas */
-  --ink: #1A2238;        /* texto principal, azul tinta */
-  --ink-soft: #4B5571;   /* texto secundario */
-  --line: #DCE1EA;       /* líneas y bordes */
-  --link: #2B50C8;       /* enlaces */
-  --marker: #FFE45E;     /* subrayador */
-  --code-bg: #EEF1F6;    /* fondo del código */
+  /* Colores: light-dark(modo claro, modo oscuro) */
+  --paper: light-dark(#FAF6F0, #2B2826);      /* fondo */
+  --surface: light-dark(#FFFDF9, #353230);    /* cajas */
+  --ink: light-dark(#3D3935, #F3EAE0);        /* texto principal, gris oscuro */
+  --ink-soft: light-dark(#6E665F, #C4BBB1);   /* texto secundario */
+  --line: light-dark(#E6DCCF, #4A4642);       /* líneas y bordes */
+  --link: light-dark(#B4471F, #F0A27A);       /* enlaces, terracota */
+  --marker: light-dark(#FFD27A, rgba(255, 190, 90, 0.32));  /* subrayador */
+  --code-bg: light-dark(#F1E9DD, #232120);    /* fondo del código */
 
   /* Tipografías */
   --font-head: "Literata", Georgia, "Times New Roman", serif;
@@ -25,35 +25,11 @@
   --radius: 10px;
   --header-h: 4rem;
 
-  color-scheme: light;
+  /* Sigue al sistema; el botón de la cabecera fuerza uno de los dos con data-theme */
+  color-scheme: light dark;
 }
-
-/* Modo oscuro: automático según el sistema, salvo que se elija a mano con el botón */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #11162A;
-    --surface: #182036;
-    --ink: #E8EBF4;
-    --ink-soft: #A9B1C7;
-    --line: #2A3352;
-    --link: #93AEFF;
-    --marker: rgba(255, 228, 94, 0.32);
-    --code-bg: #0D1222;
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
-  --paper: #11162A;
-  --surface: #182036;
-  --ink: #E8EBF4;
-  --ink-soft: #A9B1C7;
-  --line: #2A3352;
-  --link: #93AEFF;
-  --marker: rgba(255, 228, 94, 0.32);
-  --code-bg: #0D1222;
-  color-scheme: dark;
-}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 /* ---------- Base ---------- */
 
@@ -102,7 +78,7 @@ a:hover { text-decoration-thickness: 2px; }
   border-radius: 4px;
 }
 
-::selection { background: #FFE45E; color: #1A2238; }
+::selection { background: #FFD27A; color: #3D3935; }
 
 .wrap {
   width: 100%;
@@ -155,6 +131,7 @@ a:hover { text-decoration-thickness: 2px; }
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  margin-left: auto;
 }
 
 .site-nav a {
@@ -162,7 +139,8 @@ a:hover { text-decoration-thickness: 2px; }
   text-decoration: none;
   font-size: 0.975rem;
 }
-.site-nav a:hover { color: var(--ink); }
+.site-nav a { transition: color 0.2s, border-color 0.2s; }
+.site-nav a:hover { color: var(--link); }
 
 .site-nav .nav-cta {
   color: var(--ink);
@@ -171,6 +149,17 @@ a:hover { text-decoration-thickness: 2px; }
   padding: 0.35rem 0.9rem;
   border-radius: 999px;
 }
+.site-nav .nav-cta:hover { border-color: var(--link); }
+
+/* Hueco reservado para el logo, arriba a la derecha */
+.header-logo {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: 0.5rem;
+  order: 3;
+}
+.header-logo img { width: 100%; height: 100%; object-fit: contain; }
 
 .theme-toggle {
   display: none;
@@ -228,6 +217,7 @@ a:hover { text-decoration-thickness: 2px; }
     font-size: 1.05rem;
     color: var(--ink);
   }
+  .js .site-nav a:hover { color: var(--link); }
   .js .site-nav .nav-cta {
     margin-top: 1rem;
     text-align: center;
@@ -272,12 +262,51 @@ a:hover { text-decoration-thickness: 2px; }
   margin-bottom: 1rem;
 }
 
+/* Títulos escritos como código: tipografía monoespaciada, «>» delante y cursor */
+.hero h1,
+.section h2,
+.explainer-title,
+.article h1 {
+  font-family: var(--font-code);
+  letter-spacing: -0.03em;
+}
+.hero h1::before,
+.section h2::before,
+.explainer-title::before,
+.article h1::before {
+  content: "> " / "";
+  color: var(--link);
+}
+
 .hero h1 {
-  font-size: clamp(2.6rem, 1.5rem + 4.4vw, 4.9rem);
+  font-size: clamp(2rem, 1.2rem + 3.2vw, 3.6rem);
   font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.04;
-  max-width: 13ch;
+  line-height: 1.15;
+  max-width: 18ch;
+}
+
+/* Efecto de escritura (lo activa js/main.js): cada letra aparece una a una */
+.typed .ch { opacity: 0; }
+.typed .ch.on { opacity: 1; }
+
+.cursor {
+  position: relative;
+  display: inline-block;
+  width: 0;
+}
+.cursor::after {
+  content: "";
+  position: absolute;
+  left: 0.04em;
+  bottom: -0.06em;
+  width: 0.09em;
+  height: 1.05em;
+  background: var(--link);
+}
+.cursor.done::after { animation: cursor-blink 1.1s steps(1) infinite; }
+
+@keyframes cursor-blink {
+  50% { opacity: 0; }
 }
 
 .hero-lead {
@@ -497,12 +526,10 @@ figure.is-missing .photo-fallback {
 
 .section {
   padding-block: clamp(4rem, 8vw, 6.5rem);
-  border-top: 1px solid var(--line);
 }
 
 .section h2 {
-  font-size: clamp(1.9rem, 1.35rem + 2vw, 2.75rem);
-  letter-spacing: -0.01em;
+  font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.5rem);
 }
 
 .section-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
@@ -518,9 +545,57 @@ figure.is-missing .photo-fallback {
   gap: 2rem clamp(2rem, 6vw, 5rem);
 }
 
-.prose { max-width: 64ch; }
-.prose p + p { margin-top: 1.1rem; }
-.prose p:first-child { font-size: 1.15rem; }
+/* Acordeón de «Sobre mí» (details/summary: funciona sin JavaScript) */
+.accordion { max-width: 64ch; border-bottom: 1px solid var(--line); }
+
+.accordion details { border-top: 1px solid var(--line); }
+
+.accordion summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.1rem;
+  font-family: var(--font-head);
+  font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary { transition: color 0.2s, padding-left 0.25s; }
+.accordion summary:hover { color: var(--link); padding-left: 0.5rem; }
+.accordion details[open] summary { color: var(--link); }
+
+/* El símbolo + gira hasta ser × al abrir */
+.accordion summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--ink-soft);
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1), color 0.2s;
+}
+.accordion details[open] summary::after { transform: rotate(135deg); color: var(--link); }
+
+.accordion details p {
+  padding-bottom: 1.4rem;
+  color: var(--ink-soft);
+  opacity: 0;
+  transform: translateY(-0.5rem);
+  transition: opacity 0.35s 0.08s, transform 0.35s 0.08s;
+}
+.accordion details[open] p { opacity: 1; transform: none; }
+
+/* El contenido se despliega con altura animada (navegadores recientes; en los demás se abre de golpe) */
+:root { interpolate-size: allow-keywords; }
+.accordion details::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size 0.4s cubic-bezier(0.65, 0, 0.35, 1), content-visibility 0.4s allow-discrete;
+}
+.accordion details[open]::details-content { block-size: auto; }
 
 @media (max-width: 760px) {
   .two-col { grid-template-columns: 1fr; }
@@ -528,37 +603,124 @@ figure.is-missing .photo-fallback {
 
 /* ---------- Servicios ---------- */
 
-.service {
+/* Línea horizontal con un punto por servicio. En pantallas estrechas la línea pasa a vertical */
+.services {
+  --gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: minmax(10rem, 18rem) minmax(0, 1fr);
-  gap: 0.75rem clamp(1.5rem, 5vw, 4rem);
-  align-items: baseline;
-  padding-block: clamp(1.25rem, 3vw, 2rem);
-  border-top: 1px solid var(--line);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--gap);
 }
-.service:last-child { border-bottom: 1px solid var(--line); }
+
+.service {
+  position: relative;
+  padding-top: 2.5rem;
+}
+
+/* Tramo de línea que une este punto con el siguiente */
+.service::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  right: calc(var(--gap) * -1);
+  height: 2px;
+  background: var(--line);
+  transform-origin: left;
+}
+.service:last-child::before { right: 0; }
+
+/* El punto */
+.service::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--ink-soft);
+  transition: scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.service:hover::after {
+  scale: 1.8;
+  background: var(--link);
+  border-color: var(--link);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--link) 20%, transparent);
+}
 
 .service h3 {
-  font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+  font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem);
   font-weight: 500;
-  letter-spacing: -0.015em;
-  line-height: 1;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
-.service p { max-width: 58ch; color: var(--ink-soft); }
+.service p {
+  margin-top: 0.6rem;
+  font-size: 0.975rem;
+  color: var(--ink-soft);
+}
 
-@media (max-width: 640px) {
-  .service { grid-template-columns: 1fr; }
+/* Aparición: la línea se dibuja y los puntos van saliendo de uno en uno (lo activa js/main.js) */
+.js .services:not(.is-in) .service::before { transform: scaleX(0); }
+.js .services:not(.is-in) .service::after { transform: scale(0); }
+.js .services:not(.is-in) .service h3,
+.js .services:not(.is-in) .service p { opacity: 0; transform: translateY(0.75rem); }
+
+.js .services .service::before { transition: transform 0.5s ease-out calc(var(--i) * 0.3s + 0.15s); }
+.js .services .service::after {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--i) * 0.3s),
+              scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.js .services .service h3,
+.js .services .service p { transition: opacity 0.5s calc(var(--i) * 0.3s + 0.1s), transform 0.5s calc(var(--i) * 0.3s + 0.1s); }
+
+@media (max-width: 1000px) {
+  .services { grid-template-columns: 1fr; --gap: 2rem; }
+
+  .service { padding: 0 0 0 2.25rem; }
+
+  .service::before {
+    top: 0.5rem;
+    bottom: calc(var(--gap) * -1);
+    left: 0.5rem;
+    right: auto;
+    width: 2px;
+    height: auto;
+    transform-origin: top;
+  }
+  .service:last-child::before { display: none; }
+  .service::after { top: 0.2rem; }
+
+  .js .services:not(.is-in) .service::before { transform: scaleY(0); }
 }
 
 /* ---------- Proyectos ---------- */
 
-.project-feature {
+.project-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: center;
 }
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+.project-body .btn { margin-top: auto; }
 
 .project-shot {
   margin: 0;
@@ -588,31 +750,24 @@ figure.is-missing .photo-fallback {
 .project-facts dt { font-weight: 700; }
 .project-facts dd { margin: 0; color: var(--ink-soft); }
 
-.project-pair {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin-top: clamp(2rem, 4vw, 3rem);
-}
-
 .project-small {
+  margin-top: clamp(2rem, 4vw, 3rem);
   padding: clamp(1.25rem, 3vw, 1.75rem);
   border-radius: var(--radius);
   background: var(--surface);
   border: 1px solid var(--line);
 }
 .project-small h3 { font-size: 1.35rem; }
-.project-small p { color: var(--ink-soft); margin: 0.6rem 0 1rem; }
-.project-small a { font-weight: 700; }
+.project-small p { color: var(--ink-soft); margin-top: 0.6rem; }
+.project-small a { display: inline-block; margin-top: 1rem; font-weight: 700; }
 
 .project-next {
   background: transparent;
-  border: 1.5px dashed var(--ink-soft);
+  border: 1.5px dashed var(--link);
 }
 
 @media (max-width: 760px) {
-  .project-feature,
-  .project-pair { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- Trayectoria ---------- */
@@ -643,21 +798,38 @@ figure.is-missing .photo-fallback {
 }
 .timeline li:last-child .tl-what { padding-bottom: 0; }
 
+/* Mismo punto que en «En qué te puedo ayudar» */
 .tl-what::before {
   content: "";
   position: absolute;
-  left: -7px;
-  top: 0.45rem;
-  width: 12px;
-  height: 12px;
+  left: calc(-0.525rem - 1px);
+  top: 0.2rem;
+  width: 1.05rem;
+  height: 1.05rem;
   border-radius: 50%;
   background: var(--paper);
   border: 2px solid var(--ink-soft);
+  transition: scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
-.timeline li:first-child .tl-what::before {
-  background: var(--ink);
-  border-color: var(--ink);
+.timeline li:hover .tl-what::before {
+  scale: 1.8;
+  background: var(--link);
+  border-color: var(--link);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--link) 20%, transparent);
 }
+
+/* Aparición: los puntos van saliendo de uno en uno (lo activa js/main.js) */
+.js .timeline:not(.is-in) .tl-what::before { transform: scale(0); }
+.js .timeline:not(.is-in) .tl-when,
+.js .timeline:not(.is-in) .tl-what > * { opacity: 0; transform: translateY(0.75rem); }
+
+.js .timeline .tl-what::before {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--i) * 0.3s),
+              scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.js .timeline .tl-when,
+.js .timeline .tl-what > * { transition: opacity 0.5s calc(var(--i) * 0.3s + 0.1s), transform 0.5s calc(var(--i) * 0.3s + 0.1s); }
 
 .tl-what h3 { font-size: 1.3rem; }
 .tl-org { font-weight: 700; margin-top: 0.15rem; }
@@ -690,20 +862,8 @@ figure.is-missing .photo-fallback {
   padding: 0;
 }
 .cv-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
   padding-block: 0.6rem;
   border-bottom: 1px solid var(--line);
-}
-.cv-list small { color: var(--ink-soft); font-size: 0.925rem; }
-.cv-list time,
-.cv-list .cv-when {
-  flex-shrink: 0;
-  text-align: right;
-  color: var(--ink-soft);
-  font-size: 0.925rem;
 }
 
 .cv-source {
@@ -810,9 +970,8 @@ figure.is-missing .photo-fallback {
 }
 
 .article h1 {
-  font-size: clamp(2.2rem, 1.5rem + 3vw, 3.4rem);
-  letter-spacing: -0.015em;
-  line-height: 1.08;
+  font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem);
+  line-height: 1.15;
 }
 .article-meta {
   color: var(--ink-soft);
@@ -839,4 +998,15 @@ figure.is-missing .photo-fallback {
   html { scroll-behavior: auto; }
   .panel:not([hidden]) .marker { animation: none; }
   .btn { transition: none; }
+  .accordion summary,
+  .accordion summary::after,
+  .accordion details p,
+  .accordion details::details-content { transition: none; }
+  .js .services .service::before,
+  .js .services .service::after,
+  .js .services .service h3,
+  .js .services .service p,
+  .js .timeline .tl-what::before,
+  .js .timeline .tl-when,
+  .js .timeline .tl-what > * { transition: none; }
 }
