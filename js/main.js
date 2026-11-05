@@ -1,5 +1,12 @@
 // Sara Sánchez Ortiz · Interacciones de la web
 
+// Textos de los botones según el idioma de la página (<html lang>)
+const TEXT = {
+  es: { menu: 'Menú', close: 'Cerrar', toDark: 'Cambiar a modo oscuro', toLight: 'Cambiar a modo claro' },
+  en: { menu: 'Menu', close: 'Close', toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
+};
+const ui = TEXT[document.documentElement.lang] || TEXT.es;
+
 // 1. Menú en el móvil
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.getElementById('menu');
@@ -7,7 +14,7 @@ const nav = document.getElementById('menu');
 if (toggle && nav) {
   const setMenu = (open) => {
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? 'Cerrar' : 'Menú';
+    toggle.textContent = open ? ui.close : ui.menu;
     nav.classList.toggle('is-open', open);
   };
 
@@ -60,24 +67,26 @@ tabs.forEach((tab, i) => {
   });
 });
 
-// 2b. Idioma de los ejemplos (ES / EN / DE). El texto en español es el original del HTML
+// 2b. Idioma de los ejemplos (ES / EN / DE). El texto original del HTML está en el idioma de la página
 const explainer = document.querySelector('.explainer');
 const langSwitch = explainer?.querySelector('.lang-switch');
 
 if (explainer && langSwitch) {
+  const baseLang = document.documentElement.lang in TEXT ? document.documentElement.lang : 'es';
   const labels = {
-    'Antes': { en: 'Before', de: 'Vorher' },
-    'Después': { en: 'After', de: 'Nachher' },
+    before: { es: 'Antes', en: 'Before', de: 'Vorher' },
+    after: { es: 'Después', en: 'After', de: 'Nachher' },
   };
-  const translatable = Array.from(explainer.querySelectorAll('[data-en], .pane-label'));
-  translatable.forEach((el) => { el.dataset.es = el.textContent; });
+  const labelKey = { 'Antes': 'before', 'Before': 'before', 'Después': 'after', 'After': 'after' };
+  const translatable = Array.from(explainer.querySelectorAll('[data-es], [data-en], .pane-label'));
+  translatable.forEach((el) => { el.dataset[baseLang] = el.textContent; });
 
   const langButtons = Array.from(langSwitch.querySelectorAll('button'));
 
   const setLang = (lang) => {
     translatable.forEach((el) => {
-      const label = labels[el.dataset.es];
-      const text = lang === 'es' ? el.dataset.es : (label ? label[lang] : el.dataset[lang]);
+      const key = labelKey[el.dataset[baseLang]];
+      const text = key ? labels[key][lang] : el.dataset[lang];
       if (text) el.textContent = text;
     });
     explainer.querySelectorAll('.pane-plain, .pane-dense, .explainer-note').forEach((el) => {
@@ -102,7 +111,7 @@ if (themeToggle) {
   const showTheme = () => {
     const dark = currentTheme() === 'dark';
     themeToggle.dataset.mode = dark ? 'dark' : 'light';
-    themeToggle.setAttribute('aria-label', dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    themeToggle.setAttribute('aria-label', dark ? ui.toLight : ui.toDark);
   };
 
   themeToggle.addEventListener('click', () => {
@@ -116,15 +125,7 @@ if (themeToggle) {
   showTheme();
 }
 
-// 2d. Si la persona prefiere menos movimiento, el vídeo no arranca solo
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.querySelectorAll('video[autoplay]').forEach((video) => {
-    video.removeAttribute('autoplay');
-    video.pause();
-  });
-}
-
-// 2e. Los títulos se escriben letra a letra, como código. El del inicio arranca solo;
+// 2d. Los títulos se escriben letra a letra, como código. El del inicio arranca solo;
 // los demás, cuando aparecen en pantalla
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const typeTitle = (title) => {
@@ -181,7 +182,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('.hero h1, .section h2, .explainer-title, .article h1').forEach(typeTitle);
 }
 
-// 2f. Servicios y trayectoria: los puntos aparecen uno a uno al llegar a la sección
+// 2e. Servicios y trayectoria: los puntos aparecen uno a uno al llegar a la sección
 document.querySelectorAll('.services, .timeline').forEach((list) => {
   Array.from(list.children).forEach((item, i) => item.style.setProperty('--i', i));
 

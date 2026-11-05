@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sara Sánchez Ortiz | Redacción técnica, traducción y creación de webs</title>
+  <meta name="description" content="Sara Sánchez Ortiz, Senior Technical Writer en Omada. Escribo, edito, reviso y traduzco contenidos técnicos, y creo webs sencillas desde cero.">
+  <meta name="author" content="Sara Sánchez Ortiz">
+
+  <!-- Cómo se ve la web al compartirla en LinkedIn, WhatsApp, etc. -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Sara Sánchez Ortiz | Redacción técnica y webs">
+  <meta property="og:description" content="Convierto el «¿cómo dices?» en «ah, pues era fácil». Redacción, edición, revisión, traducción y creación de webs.">
+  <meta property="og:url" content="https://sarasanchezor.github.io/es/">
+  <meta property="og:locale" content="es_ES">
+  <!-- EDITA (opcional): añade una imagen de 1200×630 px en img/og.jpg y quita el comentario de la línea siguiente -->
+  <!-- <meta property="og:image" content="https://sarasanchezor.github.io/img/og.jpg"> -->
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#inicio">Sara Sánchez Ortiz</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav id="menu" class="site-nav" aria-label="Principal">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#trayectoria">Trayectoria</a>
+        <a href="#formacion">Formación</a>
+        <a href="#blog">Blog</a>
+        <a class="nav-cta" href="#contacto">Contacto</a>
+        <span class="lang-links" role="group" aria-label="Idioma">
+          <a href="index.html" hreflang="es" lang="es" aria-current="true">ES</a>
+          <a href="../index.html" hreflang="en" lang="en">EN</a>
+        </span>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Cambiar a modo oscuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <!-- EDITA: espacio reservado para tu logo. Pon aquí, por ejemplo: <img src="../img/logo.svg" alt="Logo de Sara Sánchez Ortiz" width="40" height="40"> -->
+      <div class="header-logo"></div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ INICIO ============ -->
+    <section id="inicio" class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="hero-role">Senior Technical Writer</p>
+          <h1>Convierto el "¿cómo dices?" en "ah, pues era fácil."</h1>
+          <p class="hero-lead">
+            Hola, soy Sara, redactora y traductora técnica. Eso significa que me paso el día leyendo código,
+            manuales y procesos y los escribo para que una persona normal
+            pueda seguirlos. Por el camino aprendí a programar, así que ahora también creo webs desde cero:
+            claras, sencillas y bien escritas.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#proyectos">Ver lo que he hecho</a>
+            <a class="btn btn-secondary" href="#trayectoria">Mi trayectoria</a>
+            <a class="btn btn-secondary" href="#formacion">Mi formación</a>
+            <a class="btn btn-secondary" href="#contacto">Dime hola</a>
+          </div>
+        </div>
+
+        <!-- EDITA: guarda tu foto como img/sara.jpg (vertical, unos 800×1000 px) -->
+        <figure class="hero-photo">
+          <img src="../img/sara.jpg" alt="Sara Sánchez Ortiz sonriendo en un parque" width="400" height="400" data-fallback>
+          <span class="photo-fallback" aria-hidden="true">SS</span>
+        </figure>
+      </div>
+
+      <!-- Demostración: lo técnico, explicado -->
+      <div class="wrap">
+        <div class="explainer">
+          <div class="explainer-head">
+            <h2 class="explainer-title" data-en="Technical content, explained" data-de="Technik, einfach erklärt">Lo técnico, explicado</h2>
+            <div class="lang-switch" role="group" aria-label="Idioma del ejemplo" hidden>
+              <button type="button" data-lang="es" aria-pressed="true" lang="es" aria-label="Español">ES</button>
+              <button type="button" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+              <button type="button" data-lang="de" aria-pressed="false" lang="de" aria-label="Deutsch">DE</button>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Elige un ejemplo">
+              <button role="tab" id="tab-error" aria-controls="panel-error" aria-selected="true" data-en="An error message" data-de="Eine Fehlermeldung">Un mensaje de error</button>
+              <button role="tab" id="tab-code" aria-controls="panel-code" aria-selected="false" tabindex="-1" data-en="A piece of code" data-de="Ein Stück Code">Un trozo de código</button>
+              <button role="tab" id="tab-text" aria-controls="panel-text" aria-selected="false" tabindex="-1" data-en="A convoluted text" data-de="Ein umständlicher Text">Un texto enrevesado</button>
+            </div>
+          </div>
+
+          <div id="panel-error" class="panel" role="tabpanel" aria-labelledby="tab-error">
+            <div class="pane">
+              <p class="pane-label">Antes</p>
+              <pre class="pane-code"><code>Error 403: Forbidden. The server understood the request but refuses to authorize it. Token scope insufficient for resource /api/v2/identities.</code></pre>
+            </div>
+            <span class="pane-arrow" aria-hidden="true"></span>
+            <div class="pane">
+              <p class="pane-label">Después</p>
+              <p class="pane-plain"><span class="marker" data-en="You don't have permission to view identities. Ask the person who manages the system for access and try again." data-de="Sie haben keine Berechtigung, Identitäten anzuzeigen. Bitten Sie die Person, die das System verwaltet, um Zugriff und versuchen Sie es erneut.">No tienes permiso para ver las identidades. Pide acceso a la persona que administra el sistema y vuelve a intentarlo.</span></p>
+            </div>
+          </div>
+
+          <div id="panel-code" class="panel" role="tabpanel" aria-labelledby="tab-code" hidden>
+            <div class="pane">
+              <p class="pane-label">Antes</p>
+              <pre class="pane-code"><code>const LIMIT = 90 * 86400000;
+
+if (Date.now() - user.lastLogin &gt; LIMIT) {
+  account.disable();
+  notify(user.manager);
+}</code></pre>
+            </div>
+            <span class="pane-arrow" aria-hidden="true"></span>
+            <div class="pane">
+              <p class="pane-label">Después</p>
+              <p class="pane-plain"><span class="marker" data-en="If someone goes more than 90 days without signing in, their account is disabled automatically and their manager gets a notification." data-de="Wenn sich jemand länger als 90 Tage nicht anmeldet, wird das Konto automatisch deaktiviert und die verantwortliche Führungskraft benachrichtigt.">Si alguien pasa más de 90 días sin entrar, su cuenta se desactiva sola y su responsable recibe un aviso.</span></p>
+            </div>
+          </div>
+
+          <div id="panel-text" class="panel" role="tabpanel" aria-labelledby="tab-text" hidden>
+            <div class="pane">
+              <p class="pane-label">Antes</p>
+              <p class="pane-dense" data-en="Prior to the performance of any operation, the user shall proceed to the completion of the request form made available for that purpose on the platform." data-de="Vor Durchführung eines jeden Vorgangs ist von der nutzenden Person zunächst das zu diesem Zweck auf der Plattform bereitgestellte Antragsformular auszufüllen.">Con carácter previo a la realización de cualquier operación, el usuario deberá proceder a la cumplimentación del formulario de solicitud habilitado a tal efecto en la plataforma.</p>
+            </div>
+            <span class="pane-arrow" aria-hidden="true"></span>
+            <div class="pane">
+              <p class="pane-label">Después</p>
+              <p class="pane-plain"><span class="marker" data-en="Before you start, fill in the request form." data-de="Füllen Sie das Antragsformular aus, bevor Sie beginnen.">Antes de empezar, rellena el formulario de solicitud.</span></p>
+            </div>
+          </div>
+
+          <p class="explainer-note" data-en="This is my day-to-day: reading what the machines say and retelling it so it makes sense the first time, even on a Monday morning." data-de="Das ist mein Arbeitsalltag: lesen, was die Maschinen sagen, und es so erzählen, dass es gleich beim ersten Mal Sinn ergibt, sogar an einem Montagmorgen.">Esto es mi día a día: leer lo que dicen las máquinas y contarlo para que se entienda a la primera, incluso un lunes a las nueve.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE MÍ ============ -->
+    <section id="sobre-mi" class="section">
+      <div class="wrap two-col">
+        <h2>Sobre mí</h2>
+        <div class="accordion">
+          <details name="sobre-mi" open>
+            <summary>De traducir a documentar software</summary>
+            <p>
+              Empecé como traductora técnica: manuales, patentes y documentación.
+              Poco a poco el software se convirtió en mi terreno, y hoy soy Senior Technical Writer en Omada,
+              donde documento una plataforma de gobierno de identidades. Por el camino he
+              liderado la localización de un producto de software a ocho idiomas, y he aprendido que
+              "es solo un botón" nunca es solo un botón.
+            </p>
+          </details>
+          <details name="sobre-mi">
+            <summary>Aprender a leer código</summary>
+            <p>
+              Para explicar bien un producto hay que entenderlo por dentro. Por eso aprendí a leer código, a trabajar
+              con Git y GitHub, VS Code, Azure DevOps y el entorno Microsoft, a probar APIs y a construir con
+              HTML, CSS, JavaScript y React. Descubrí que una buena
+              web se parece mucho a un buen manual: estructura clara, palabras justas y nada que sobre.
+              Y, además, <code>Ctrl+Z</code> funciona en los dos.
+            </p>
+          </details>
+          <details name="sobre-mi">
+            <summary>MeetContent Iberia</summary>
+            <p>
+              También soy cofundadora de <a href="https://meetcontent.github.io/iberia/">MeetContent Iberia</a>,
+              una comunidad para quienes nos dedicamos a la comunicación técnica en España y Portugal.
+              Nos juntamos, compartimos lo que aprendemos y debatimos (con cariño) sobre la coma de Oxford.
+            </p>
+          </details>
+          <details name="sobre-mi">
+            <summary>Lo que busco ahora</summary>
+            <p>
+              Ahora quiero juntar las dos cosas que más disfruto, escribir y construir, para ayudar a empresas y
+              personas a tener una web clara, útil y fácil de usar. Nada de "haz clic aquí para saber más".
+              Los dos sabemos lo que hay detrás.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section id="servicios" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>En qué te puedo ayudar</h2>
+          <p>Desde un párrafo suelto hasta una web completa. Tú me cuentas qué necesitas y yo me encargo de que se entienda. Resumiendo: nadie debería necesitar un manual para leer el manual.</p>
+        </div>
+
+        <ol class="services">
+          <li class="service">
+            <h3>Escribo</h3>
+            <p>Documentación técnica, guías de usuario, textos para tu web y artículos. Contenido claro desde la primera línea, pensado para quien lo va a leer.</p>
+          </li>
+          <li class="service">
+            <h3>Edito</h3>
+            <p>Tomo un texto que ya tienes y lo hago más corto, más claro y más fácil de leer, sin perder lo que quieres decir. Marie Kondo, pero para párrafos.</p>
+          </li>
+          <li class="service">
+            <h3>Reviso</h3>
+            <p>Coherencia, terminología, tono y erratas. Una segunda mirada antes de publicar tu documentación, tu web o tu presentación, porque "en mi máquina funciona" no es una estrategia de corrección.</p>
+          </li>
+          <li class="service">
+            <h3>Traduzco</h3>
+            <p>Traducción y localización de software y documentación técnica, cuidando que el resultado suene como si hubiera nacido en cada idioma, y no como si lo hubiera pasado una máquina y lo hubiera dejado a su suerte.</p>
+          </li>
+          <li class="service">
+            <h3>Creo webs</h3>
+            <p>Webs sencillas desde cero: tu portfolio, la web de tu negocio o la documentación de tu producto. Me ocupo de las palabras y del código, y la dejo publicada y lista para usar. <a href="#contacto">Cuéntame tu proyecto</a>.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ PROYECTOS ============ -->
+    <section id="proyectos" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Proyectos</h2>
+          <p>Webs en las que he trabajado. Cada una con sus propias palabras, su diseño y una idea clara de para quién es. No se ha dejado ningún lorem ipsum atrás.</p>
+        </div>
+
+        <div class="project-grid">
+        <article class="project-card">
+          <figure class="project-shot">
+            <img src="../img/website-alejandro-de-lucas.png" alt="Fotos de la web Alejandro de Lucas · Fotografía: una pareja sonriéndose, un niño con una manzana y una foto en blanco y negro de un embarazo con la firma del fotógrafo" width="1190" height="944" loading="lazy">
+          </figure>
+          <div class="project-body">
+            <h3>Alejandro de Lucas · Fotografía</h3>
+            <p>Portfolio de un fotógrafo especializado en fotografía de familia y fotos analógicas. Una web limpia donde las fotos son las protagonistas.</p>
+            <dl class="project-facts">
+              <div><dt>Mi papel</dt><dd>Diseño, código y publicación</dd></div>
+              <div><dt>Hecha con</dt><dd>HTML y CSS, en GitHub Pages</dd></div>
+            </dl>
+            <a class="btn btn-secondary" href="https://alexdelucas-fotografia.github.io/alejandrodelucas/">Visitar la web</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <figure class="project-shot">
+            <img src="../img/proyecto-2.jpg" alt="Captura de la web MeetContent Iberia" width="1190" height="944" loading="lazy">
+          </figure>
+          <div class="project-body">
+            <h3>MeetContent Iberia</h3>
+            <p>La web de una comunidad para quienes nos dedicamos a la comunicación técnica en España y Portugal: encuentros, artículos, un glosario abierto y una newsletter.</p>
+            <dl class="project-facts">
+              <div><dt>Mi papel</dt><dd>Cofundadora y coordinadora</dd></div>
+              <div><dt>Qué incluye</dt><dd>Meetups, blog, glosario y newsletter</dd></div>
+            </dl>
+            <a class="btn btn-secondary" href="https://meetcontent.github.io/iberia/">Visitar la web</a>
+          </div>
+        </article>
+        </div>
+    </section>
+
+    <!-- ============ TRAYECTORIA ============ -->
+    <section id="trayectoria" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Trayectoria</h2>
+          <p>De traducir manuales a documentar software y, ahora, a construir webs.</p>
+        </div>
+
+        <!-- EDITA: cambia «Antes» y «Mis inicios» por los años reales y añade empresas si quieres -->
+        <ol class="timeline">
+          <li>
+            <p class="tl-when">Ahora</p>
+            <div class="tl-what">
+              <h3>Senior Technical Writer</h3>
+              <p class="tl-org">Omada</p>
+              <p>Documento una plataforma de gobierno de identidades para que equipos técnicos y usuarios la entiendan y la usen sin tener que abrir un ticket. Resultado ideal: menos "una preguntita rápida".</p>
+            </div>
+          </li>
+          <li>
+            <p class="tl-when">Desde 2023</p>
+            <div class="tl-what">
+              <h3>Cofundadora y coordinadora</h3>
+              <p class="tl-org"><a href="https://meetcontent.github.io/iberia/">MeetContent Iberia</a></p>
+              <p>Comunidad de práctica para profesionales de la comunicación técnica en España y Portugal: encuentros, artículos y un glosario abierto.</p>
+            </div>
+          </li>
+          <li>
+            <p class="tl-when">Antes</p>
+            <div class="tl-what">
+              <h3>Redactora técnica y localización</h3>
+              <p>Documentación de software y liderazgo de un proyecto de localización a ocho idiomas.</p>
+            </div>
+          </li>
+          <li>
+            <p class="tl-when">Mis inicios</p>
+            <div class="tl-what">
+              <h3>Traductora técnica</h3>
+              <p>Manuales técnicos, patentes y documentación de nuevas tecnologías. Historia de origen: aquí me picó el bicho del software (el bueno).</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FORMACIÓN Y CUALIDADES ============ -->
+    <section id="formacion" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Formación y cualidades</h2>
+          <p>Lo que he estudiado y lo que he ido aprendiendo por mi cuenta para entender el código que documento.</p>
+        </div>
+
+        <h3 class="cv-title">Estudios</h3>
+        <!-- Para añadir otro estudio: copia un <li> -->
+        <ol class="timeline">
+          <li>
+            <p class="tl-when">En curso</p>
+            <div class="tl-what">
+              <h3>Doctorado en Educación y TIC (e-learning)</h3>
+              <p class="tl-org">Universitat Oberta de Catalunya (UOC)</p>
+            </div>
+          </li>
+          <li>
+            <p class="tl-when">sept. 2024 – actualidad</p>
+            <div class="tl-what">
+              <h3>Máster en Educación y TIC (e-learning)</h3>
+              <p class="tl-org">Universitat Oberta de Catalunya (UOC)</p>
+            </div>
+          </li>
+          <li>
+            <p class="tl-when">abr. 2024 – actualidad</p>
+            <div class="tl-what">
+              <h3>Natural Language Processing Expert Master's degree, Linguistics</h3>
+              <p class="tl-org">Universidad UDIMA</p>
+            </div>
+          </li>
+          <li>
+            <p class="tl-when">nov. 2019 – sept. 2021</p>
+            <div class="tl-what">
+              <h3>Master's degree in Translation and New Technologies, Language Interpretation and Translation</h3>
+              <p class="tl-org">ISTRAD - Instituto Superior de Estudios Lingüísticos y Traducción</p>
+            </div>
+          </li>
+          <li>
+            <p class="tl-when">2012 – 2017</p>
+            <div class="tl-what">
+              <h3>Lenguas Modernas y Traducción</h3>
+              <p class="tl-org">Universidad de Alcalá</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="cv-grid">
+          <div>
+            <h3 class="cv-title">Cursos</h3>
+            <ul class="cv-list">
+              <li><span>Learning Git and GitHub</span></li>
+              <li><span>API Testing Foundations</span></li>
+              <li><span>Behavior-Driven Development</span></li>
+              <li><span>Introduction to Web APIs</span></li>
+              <li><span>Learning GraphQL</span></li>
+              <li><span>Programming Foundations: Software Testing/QA</span></li>
+              <li><span>Test Automation Foundations</span></li>
+              <li><span>React.js Essential Training</span></li>
+              <li><span>Writing in Plain Language</span></li>
+            </ul>
+            <p class="cv-source">Cursos de LinkedIn Learning. Deberes hechos.</p>
+          </div>
+
+          <div>
+            <h3 class="cv-title">Lo que se me da bien</h3>
+            <dl class="skills">
+              <div><dt>Lenguaje claro</dt><dd>Quitar lo que sobra hasta que el texto se entiende a la primera.</dd></div>
+              <div><dt>Leer código</dt><dd>Entender qué hace un programa para poder explicarlo.</dd></div>
+              <div><dt>Traducción y localización</dt><dd>Software y documentación que suenan naturales en cada idioma.</dd></div>
+              <div><dt>Documentación como código</dt><dd>Markdown, Git y GitHub, además de VS Code, Azure DevOps y el entorno Microsoft, para escribir y publicar como un equipo de desarrollo.</dd></div>
+              <div><dt>Desarrollo web</dt><dd>HTML, CSS, JavaScript y React para crear webs sencillas y accesibles.</dd></div>
+              <div><dt>APIs y testing</dt><dd>REST, GraphQL y pruebas para documentar con conocimiento.</dd></div>
+              <div><dt>Comunidad</dt><dd>Organizar encuentros y crear espacios para compartir lo que aprendemos.</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BLOG ============ -->
+    <section id="blog" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Blog</h2>
+          <p>Escribo sobre redacción técnica, lenguaje claro y lo que voy aprendiendo de código.
+        </div>
+
+        <!-- Para añadir un artículo nuevo: copia blog/hola-mundo.html, cámbiale el nombre y añade una fila aquí arriba -->
+        <ul class="posts">
+          <li>
+            <a href="blog/hola-mundo.html">Hola, mundo: empiezo un blog</a>
+            <p>En este blog <span class="post-sep">|</span> <time datetime="2026-11-03">3 de noviembre de 2026</time></p>
+          </li>
+          <li>
+            <a href="https://meetcontent.github.io/iberia/blog/iberia-comunicaci%C3%B3n-redaccion-tecnica">Comunicación o Redacción técnica, ¿qué es qué?</a>
+            <p>MeetContent Iberia <span class="post-sep">|</span> <time datetime="2023-11-02">2 de noviembre de 2023</time></p>
+          </li>
+          <li>
+            <a href="https://meetcontent.github.io/iberia/blog/iberia-historia-redaccion-tecnica">La Redacción Técnica tiene un pasado</a>
+            <p>MeetContent Iberia <span class="post-sep">|</span> <time datetime="2023-10-26">26 de octubre de 2023</time></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section id="contacto" class="section contact">
+      <div class="wrap">
+        <h2>¿Hablamos de tu proyecto?</h2>
+        <p class="contact-lead">
+          Tanto si necesitas una web desde cero como si quieres que escriba, edite, revise o traduzca tus textos,
+          cuéntame qué tienes en mente y te respondo. Sin formularios, sin chatbots, sin "su llamada es importante para nosotros":
+          solo un buen correo de los de toda la vida, escrito por una persona.
+        </p>
+        <!-- EDITA: pon tu email en los dos sitios de la línea siguiente -->
+        <a class="contact-mail" href="mailto:saraortizaviles@gmail.com">saraortizaviles@gmail.com</a>
+        <ul class="contact-links">
+          <li><a href="https://www.linkedin.com/in/sarasanchezortiz/">LinkedIn</a></li>
+          <li><a href="https://github.com/SaraSanchezOr">GitHub</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© <span data-year>2026</span> Sara Sánchez Ortiz</p>
+      <p>Hecha a mano con HTML, CSS y JavaScript. Publicada en GitHub Pages. <a href="aviso-legal.html">Aviso legal</a></p>
+    </div>
+  </footer>
+</body>
+</html>

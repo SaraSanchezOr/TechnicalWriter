@@ -5,10 +5,12 @@ Portfolio, CV y blog. Hecha con HTML, CSS y JavaScript, sin frameworks, y public
 ## Qué hay en cada carpeta
 
 ```
-index.html            Página principal (todas las secciones)
+index.html            Página principal, en inglés (todas las secciones)
+legal-notice.html     Aviso legal en inglés
+blog/hello.html       Primer artículo del blog en inglés (sirve de plantilla)
+es/                   Versión en español: index.html, aviso-legal.html y blog/hola-mundo.html
 css/styles.css        Estilos. Colores y tipografías al principio, en :root
 js/main.js            Menú del móvil, pestañas de ejemplos e imágenes de reserva
-blog/hola-mundo.html  Primer artículo del blog (sirve de plantilla)
 img/                  Tu foto y las capturas de tus proyectos
 favicon.svg           Icono de la pestaña del navegador
 ```
@@ -22,7 +24,7 @@ Busca `EDITA` en VS Code (Ctrl+Mayús+F o Cmd+Mayús+F) y verás todos los punto
 3. **Tu titulación** de la UOC, en la sección Formación.
 4. **Tu email**, en la sección Contacto (aparece dos veces en la misma línea).
 5. **Las fechas de la trayectoria**: cambia «Antes» y «Mis inicios» por los años reales si quieres.
-6. **El artículo del blog**: `blog/hola-mundo.html` es un borrador. Reescríbelo a tu manera.
+6. **El artículo del blog**: `blog/hello.html` es un borrador. Reescríbelo a tu manera.
 
 Si falta una imagen, la web muestra un recuadro en su lugar, así que puedes publicar aunque aún no tengas todas.
 
@@ -57,7 +59,7 @@ Si compras un dominio (por ejemplo, `sarasanchezortiz.com`), añádelo en **Sett
 
 ## Escribir un artículo nuevo
 
-1. Duplica `blog/hola-mundo.html` y cámbiale el nombre (por ejemplo, `blog/lenguaje-claro.html`). Usa minúsculas y guiones, sin tildes ni espacios.
+1. Duplica `blog/hello.html` y cámbiale el nombre (por ejemplo, `blog/lenguaje-claro.html`). Usa minúsculas y guiones, sin tildes ni espacios.
 2. Cambia el `<title>`, la descripción, el `<h1>`, la fecha y el texto.
 3. En `index.html`, sección Blog, añade una fila nueva arriba del todo con el enlace al artículo.
 
