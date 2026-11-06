@@ -49,7 +49,7 @@ Si falta una imagen, la web muestra un recuadro en su lugar, así que puedes pub
    ```
 
 3. En el repositorio, ve a **Settings → Pages**. En *Source* elige **Deploy from a branch**, rama `main` y carpeta `/ (root)`. Guarda.
-4. En uno o dos minutos la web estará en **https://sarasanchezor.github.io**.
+4. En uno o dos minutos la web estará en **https://sarasanchezor.github.io/TechnicalWriter/**.
 
 Para actualizarla, guarda los cambios y haz `git add .`, `git commit -m "Lo que has cambiado"` y `git push`.
 
